@@ -31,20 +31,20 @@ class MovieHorizontal extends StatelessWidget {
         pageSnapping: false,
         controller: _pageController,
         //child: _tarjetas(context),
-        itemBuilder: (context, i){
+        itemBuilder: (context, i) {
           return _tarjeta(context, peliculas[i]);
-
         },
       ),
     );
   }
 
-  Widget _tarjeta(BuildContext context, pelicula){
-    final tarjeta =  Container(
-        margin: EdgeInsets.only(right: 15.0),
-        child: Column(
-          children: <Widget>[
-            ClipRRect(
+  Widget _tarjeta(BuildContext context, pelicula) {
+    final tarjeta = Container(
+      margin: EdgeInsets.only(right: 15.0),
+      child: Column(
+        children: <Widget>[
+          Hero(
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
                 image: NetworkImage(pelicula.getPosterImg()),
@@ -52,23 +52,23 @@ class MovieHorizontal extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: 155.0,
               ),
-            ),
-            //SizedBox(height: 1.0,),
-            Text(
-              pelicula.title,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.caption,
-            )
-          ],
-        ),
-      );
+            ), tag: pelicula.id,
+          ),
+          //SizedBox(height: 1.0,),
+          Text(
+            pelicula.title,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.caption,
+          )
+        ],
+      ),
+    );
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.pushNamed(context, 'detalle', arguments: pelicula);
-      } ,
+      },
       child: tarjeta,
     );
-
   }
 
   List<Widget> _tarjetas(BuildContext context) {
@@ -98,5 +98,5 @@ class MovieHorizontal extends StatelessWidget {
         ),
       );
     }).toList();
-  }   // YA NO SE USA MAS
+  } // YA NO SE USA MAS
 }
