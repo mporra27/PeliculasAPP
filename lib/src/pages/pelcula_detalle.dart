@@ -130,11 +130,32 @@ class PeliculaDetalle extends StatelessWidget {
           viewportFraction: 0.3,
           initialPage: 1,
         ), itemBuilder: (BuildContext context, i) {
-        return Text(actores[i].name);
+        return _actorTarjeta(actores[i]);
       },
       ),
     );
 
   }
 
+
+  Widget _actorTarjeta ( Actor actor){
+  return Container (
+    child: Column(
+      children: <Widget>[
+        Divider(),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: FadeInImage(
+            image: NetworkImage(actor.getFoto()),
+            placeholder: AssetImage('assets/no-imgage.jpg'),
+            height: 150.0,
+            fit:BoxFit.cover,
+          ),
+        ),
+        Text(actor.name,
+        overflow: TextOverflow.ellipsis,)
+      ],
+    ),
+  );
+  }
 }
