@@ -13,7 +13,8 @@ class Peliculas {
   }
 }
 
-class Pelicula {
+class Pelicula { //propiedades de pelicula
+  String uniqueId; //inventé una propiedad para tener una propiedad unica en el Hero de las tarjetas grandes
   int voteCount;
   int id;
   bool video;

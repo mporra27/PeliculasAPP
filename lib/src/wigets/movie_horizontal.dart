@@ -39,11 +39,14 @@ class MovieHorizontal extends StatelessWidget {
   }
 
   Widget _tarjeta(BuildContext context, pelicula) {
+    pelicula.uniqueId = '${pelicula.id}-poster'; //este es el que le voy a mandar al Hero
+
     final tarjeta = Container(
       margin: EdgeInsets.only(right: 15.0),
       child: Column(
         children: <Widget>[
           Hero(
+            tag: pelicula.uniqueId,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
@@ -52,7 +55,7 @@ class MovieHorizontal extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: 155.0,
               ),
-            ), tag: pelicula.id,
+            ),
           ),
           //SizedBox(height: 1.0,),
           Text(
@@ -72,6 +75,7 @@ class MovieHorizontal extends StatelessWidget {
   }
 
   List<Widget> _tarjetas(BuildContext context) {
+    //ya no se esta usando esto, use el de arriba Gesture con la variable
     return peliculas.map((pelicula) {
       return SafeArea(
         child: Container(

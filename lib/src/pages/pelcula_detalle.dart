@@ -63,7 +63,8 @@ class PeliculaDetalle extends StatelessWidget {
                 image: NetworkImage(pelicula.getPosterImg()),
                 height: 150.0,
               ),
-            ), tag: pelicula.id,
+            ),
+            tag: pelicula.uniqueId,
           ),
           SizedBox(
             width: 20.0,

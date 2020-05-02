@@ -66,9 +66,16 @@ class PeliculasProvider {
       'api_key': _apikey,
       'language': _languaje,
     });
-    final resp = await http.get(url); 
+    final resp = await http.get(url);
     final decodeData = json.decode(resp.body);
     final cast = new Cast.fromJsonList(decodeData['cast']);
     return cast.actores;
+  }
+
+  Future<List<Pelicula>> buscarPelicula(String query) async {
+    final url = Uri.https(_url, '3/search/movie',
+        {'api_key': _apikey, 'language': _languaje, 'query': query});
+
+    return await _procesarRespuesta(url);
   }
 }
