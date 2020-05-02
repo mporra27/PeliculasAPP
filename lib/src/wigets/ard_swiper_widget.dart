@@ -14,8 +14,8 @@ class CardSwiper extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10.0),
       child: Swiper(
-        containerWidth: _screenSize.width * 0.7,
-        itemHeight: _screenSize.height * 0.5,
+        containerWidth: _screenSize.width * 0.75,
+        itemHeight: _screenSize.height * 0.50,
         layout: SwiperLayout.STACK,
         itemWidth: 200.0,
         itemBuilder: (BuildContext context, int index) {
